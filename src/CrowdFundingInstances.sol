@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: UNLICENSED
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.13;
 import "forge-std/console.sol";
 
@@ -22,7 +22,7 @@ how to distribute tokens in a verifiable manner, without having to deploy their 
 There would be no manager of this contract, it would be completely permissionless.
 */
 
-contract CrowdFundingInstances {
+contract CrowdFundingInstances { // create anonymous interaction for users
 
     struct Campaign {
         uint256 campaignId;
@@ -97,15 +97,17 @@ contract CrowdFundingInstances {
     }
 
     function completeCampaign(uint256 campaignId) public {
+        // anyone can complete the campaign (helps if the recipient doesnt know how to)
         Campaign storage campaign = campaigns[campaignId];
-        require(campaign.recipient == msg.sender, 'Only the recipient can complete the campaign');
+        //require(campaign.recipient == msg.sender, 'Only the recipient can complete the campaign');
         require(campaign.totalContributions >= campaign.goal, 'Cannot complete campaign, not enough funds raised');
         require(campaign.status == STATUS.SUCCESSFUL, 'Campaign must be successful to complete');
 
         campaign.status = STATUS.DELETED;
         uint contributions = campaign.totalContributions;
         //campaign.totalContributions = 0; // Exluding this because may want to look at contributions of past campaigns.
-        payable(campaign.recipient).transfer(contributions);
+        (bool sent, ) = campaign.recipient.call{value: contributions}("");
+        require(sent, "Failed to send Ether");
     }
 
     function getCampaignDetails(uint256 campaignId) public view returns (
