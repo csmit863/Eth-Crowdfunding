@@ -14,13 +14,13 @@ contract CrowdFundingTest is Test {
     function setUp() public {
         crowdfunding = new CrowdFundingInstances();
         vm.deal(myAddress, 1000 ether);
-        crowdfunding.createCampaign(myAddress, 10000, 10);
+        crowdfunding.createCampaign(myAddress, 10000, 10, 'test');
     }
 
     // A campaign is created.
     function test_createCampaign() public {
-        crowdfunding.createCampaign(myAddress, 10000, 10);
-        vm.deal(address(crowdfunding), 1 ether); // accepts ether, oh well... will deal with this later        
+        crowdfunding.createCampaign(myAddress, 10000, 10, 'test');
+        vm.deal(address(crowdfunding), 1 ether); // accepts ether only     
     }
 
     // Get the details of a campaign.

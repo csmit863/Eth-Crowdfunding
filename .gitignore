@@ -3,6 +3,7 @@ cache/
 out/
 
 script/
+broadcast/
 
 # Ignores development broadcast logs
 !/broadcast
