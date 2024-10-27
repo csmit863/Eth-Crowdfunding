@@ -10,7 +10,7 @@ $ n/a (deploy your own)
 ```
 - **Arbitrum One Address**
 ```shell
-$ 0x0D5f00F25a7013cef02263F806e7A57508117893
+0x0D5f00F25a7013cef02263F806e7A57508117893
 ```
 
 
@@ -21,7 +21,7 @@ I have also developed a TUI which allows you to interact with any of these contr
 At some point I will integrate this with the Railgun ZK system for privacy. Privacy is a human right.
 #### You can support me by donating to this address: 
 ```shell
-$ 0x64863c5b246aA8a2D3584B693Ece8F859f9a4F31
+0x64863c5b246aA8a2D3584B693Ece8F859f9a4F31
 ```
 You can also support me by building your own permissionless, fault-tolerant economic infrastructure O_O
 
