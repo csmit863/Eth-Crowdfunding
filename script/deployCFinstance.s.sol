@@ -1,6 +1,4 @@
 // SPDX-License-Identifier: MIT
-// deploy the contract and create a crowdfunding instance
-
 pragma solidity ^0.8.13;
 import "forge-std/console.sol";
 import "forge-std/Script.sol";
